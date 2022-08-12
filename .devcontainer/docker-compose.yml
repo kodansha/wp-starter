@@ -1,0 +1,36 @@
+services:
+  wordpress:
+    build:
+      context: ./docker/wordpress
+    init: true
+    volumes:
+      - ..:/var/www/html:cached
+      - bedrock-vendor:/var/www/html/vendor # Bedrock composer vendor
+    depends_on:
+      - mysql
+
+  nginx:
+    build:
+      context: ./docker/nginx
+    ports:
+      - "8808:80"
+    volumes:
+      - ..:/var/www/html:cached
+    depends_on:
+      - wordpress
+
+  mysql:
+    image: mysql/mysql-server:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 38808:3306
+    environment:
+      MYSQL_DATABASE: wp-starter
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
+  bedrock-vendor:
