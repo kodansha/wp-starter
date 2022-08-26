@@ -9,8 +9,8 @@ composer install
 
 # Install WordPress
 wp core install \
-  --url="http://localhost:8808" \
-  --title="wp-starter" \
+  --url="http://localhost:{{wordpress_port}}" \
+  --title="{{project_name}}" \
   --admin_user="admin" \
   --admin_password="admin" \
   --admin_email="admin@example.com" \

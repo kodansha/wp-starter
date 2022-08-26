@@ -141,7 +141,7 @@ if (!defined('ABSPATH')) {
  * By adding WP_DEFAULT_THEME, it will only show themes in web/app/themes.
  * (See web/app/mu-plugins/register-theme-directory.php for details)
  */
-define('WP_DEFAULT_THEME', 'wp-starter');
+define('WP_DEFAULT_THEME', 'default-theme');
 
 /**
  * Killer Pads

@@ -18,7 +18,7 @@ WordPress CMS のスターターボイラープレート。
 git clone https://github.com/kodansha/wp-starter.git awesome-wp
 ```
 
-### プロジェクト名の置換
+### 初期設定 (bootstrapping)
 
 clone したプロジェクトのディレクトリに入る:
 
@@ -26,14 +26,27 @@ clone したプロジェクトのディレクトリに入る:
 cd awesome-wp
 ```
 
-コード中に存在する以下の2点を任意のプロジェクト名に置換する必要があるため、エディタの一斉置換機能なども利用して置換を行う:
+clone した状態では、コード中に存在するプロジェクト名などがプレースホルダー (例: `{{project_name}}`)
+になっているため、これを置換する必要がある。
 
-(1) コード内の `wp-starter` の文言を全て置換する
-(2) `web/app/themes/wp-starter` のディレクトリ名を全て置換する
+この作業を自動化した bootstrap スクリプトを用意しているので、それを利用する。
 
-> **Warning**
-> `.devcontainer/docker-compose.yml` と　`.env.example` にある `wp-starter` はデータベース名を示している。
-> そのため、データベース名として有効なものに置換する必要があることに注意 (例えば `-` は利用できないので `_` を使うなど)
+> **Note**
+> スクリプトの実行には Node.js v12 以降が必要
+
+```text
+node scripts/bootstrap.js
+```
+
+このスクリプトを実行すると、
+
+- プロジェクト名が clone したディレクトリ名に自動設定される (例: `awesome-wp`)
+- データベース名が **`-` や `.` を `_` に置換して** clone したディレクトリ名に自動設定される (例: `awesome_wp`)
+- WordPress にアクセスするためのポートがインタラクティブに入力した値に設定される
+- データベースにアクセスするためのポートがインタラクティブに入力した値に設定される
+
+> **Note**
+> bootstrap スクリプトの実行後には `scripts` ディレクトリは削除してよい
 
 ## ローカル開発環境
 
@@ -89,14 +102,14 @@ VS Code で clone したフォルダーをワークスペースとして開き�
 
 実行が完了すると、すぐに WordPress 管理画面にアクセスできるようになる。
 
-- フロント画面: http://localhost:8808
-- 管理画面: http://localhost:8808/wp/wp-admin
+- フロント画面: http://localhost:<設定した WordPress ポート>
+- 管理画面: http://localhost:<設定した WordPress ポート>/wp/wp-admin
   - ユーザー: `admin`
   - パスワード: `admin`
 
 ## テーマの開発
 
-主に開発は WordPress テーマに対して行う。テーマは `web/app/themes` 以下に配置されている。
+主に開発は WordPress テーマに対して行う。テーマは `web/app/themes/default-theme` として配置されている。
 
 初期状態では完全に空っぽのテーマになっているため、画面なども一切ない状態。
 
@@ -109,3 +122,31 @@ Dev Container では WordPress 組み込みの擬似 cron が正常動作しな�
 ```text
 wp cron event run --due-now --allow-root
 ```
+
+## wp-starter 開発者向け情報
+
+### 更新とタグのルール
+
+wp-starter は、本家 Bedrock の更新をできるだけ取り込んで更新すべきものとなっている。
+それによって、最新の WordPress や Bedrock バージョンへの追従が可能になる。
+
+そのため、Bedrock リポジトリ側の更新差分が把握できるように、**どのバージョンの Bedrock
+がベースとなっているかを Git タグで明示しておく必要がある。**
+
+例えば、[Bedrock のリリースバージョン **1.20.1**](https://github.com/roots/bedrock/releases/tag/1.20.1)
+をベースにしている場合は、wp-starter 側でも同様に [**1.20.1** のタグを打っておく](https://github.com/kodansha/wp-starter/releases/tag/1.20.1)ことをルールとする。
+
+同様に、もし Bedrock **1.21.0** の更新差分を wp-starter に取り込んだ場合は **1.21.0** のタグを打っておくこと。
+
+### Bedrock 差分チェッカー
+
+Bedrock の更新差分の反映がやりやすいように、差分チェックを半自動化するスクリプトを用意している。
+
+スクリプトは以下で実行する:
+
+```text
+scripts/check-bedrock-changes.sh
+```
+
+このスクリプトは単純に `roots/bedrock` のリポジトリを clone して、wp-starter
+の最新タグと比較して `git difftool` を実行している。
