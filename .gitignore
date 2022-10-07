@@ -41,3 +41,5 @@ web/app/languages/
 .history/
 # devcontainer
 .devcontainer/devcontainer.json
+
+composer.lock
