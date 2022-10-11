@@ -1,5 +1,5 @@
 {
-  "name": "{{project_name}}",
+  "name": "kodansha/{{project_name}}",
   "type": "project",
   "description": "WordPress starter boilerplate using Bedrock",
   "authors": [
