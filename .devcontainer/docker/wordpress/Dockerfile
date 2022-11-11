@@ -1,4 +1,4 @@
-FROM ghcr.io/kodansha/bedrock:php8.1-fpm
+FROM ghcr.io/kodansha/bedrock:php8.0-fpm
 
 ENV WEB_ROOT /var/www/html
 
