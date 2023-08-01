@@ -5,7 +5,6 @@ services:
     init: true
     volumes:
       - ..:/workspaces/{{project_name}}:cached
-      - bedrock-vendor:/workspaces/{{project_name}}/vendor # Bedrock composer vendor
     depends_on:
       - mysql
 
@@ -33,4 +32,3 @@ services:
 
 volumes:
   mysql-data:
-  bedrock-vendor:
