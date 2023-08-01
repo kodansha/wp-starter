@@ -45,16 +45,16 @@ node scripts/bootstrap.js
 - WordPress にアクセスするためのポートがインタラクティブに入力した値に設定される
 - データベースにアクセスするためのポートがインタラクティブに入力した値に設定される
 
-また、以下の環境固有の設定ファイルが生成される:
-
-- `.env`
-- `.devcontainer/devcontainer.json`
-
-> **Warning**
-> 環境固有の設定ファイルは `.gitignore` の対象となっているため、リポジトリをチーム開発する場合は「ローカル開発環境」の「事前準備」を参考に各環境でサンプルファイルから生成すること
+> **Note**
+> WordPress のポートには、できる限りデフォルトの `80` の値を設定することを推奨する。
+> それ以外のポート (例: 8000) などを指定した場合、コンテナ内からのポートと開発マシンホストからのポートが異なるため、
+> WP-Cron が正常動作しない、一部の REST API を使った機能に不具合があるなどの問題が発生する。
 
 > **Note**
-> bootstrap スクリプトの実行後には `scripts` ディレクトリは削除してよい
+> bootstrap スクリプトの実行後には `scripts` ディレクトリは削除してよい。
+
+> **Note**
+> Git の履歴に wp-starter のログを残したくない場合には、 `.git` ディレクトリを削除し、改めて `git init` すること。
 
 ## ローカル開発環境
 
@@ -65,27 +65,6 @@ node scripts/bootstrap.js
 - 現在、ローカル開発環境は macOS + Docker Desktop のみで検証しています
 
 また、Remote - Containers を含む、推奨する VS Code の拡張機能を指定しているので、拡張機能のインストールを促すダイアログが表示された場合はインストールすること。
-
-### 事前準備
-
-> **Note**
-> bootstrap スクリプトを実行した環境ではこれらの「事前準備」は不要
-
-まず、Dev Container の設定ファイルが必要なので、テンプレートファイルをコピーして作成する:
-
-```text
-cp .devcontainer/devcontainer.default.jsonc .devcontainer/devcontainer.json
-```
-
-このファイルはデフォルトの構成を提供するものなので、コピーしてそのままでも使えるが、必要に応じて `extensions` の追加などのカスタマイズを行う。
-
-また、環境変数を `.env` で設定する必要があるため、サンプルファイルをコピーして作成する:
-
-```text
-cp .env.example .env
-```
-
-特に `.env` の内容を変更しなくてもローカル開発には問題ない。
 
 ### 開発環境の起動
 
@@ -123,16 +102,6 @@ VS Code で clone したフォルダーをワークスペースとして開き�
 主に開発は WordPress テーマに対して行う。テーマは `web/app/themes/default-theme` として配置されている。
 
 初期状態では完全に空っぽのテーマになっているため、画面なども一切ない状態。
-
-### Cron の実行
-
-Dev Container では WordPress 組み込みの擬似 cron が正常動作しないため、利用しない設定としている。
-
-もし (例えば予約投稿の確認などで) cron を実行したい場合は、Dev Container のターミナルで WP-CLI を使って cron イベントを実行すること。
-
-```text
-wp cron event run --due-now --allow-root
-```
 
 ## wp-starter 開発者向け情報
 
