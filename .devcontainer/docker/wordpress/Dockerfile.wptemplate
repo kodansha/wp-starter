@@ -1,4 +1,4 @@
-FROM ghcr.io/kodansha/bedrock:php8.0-fpm
+FROM ghcr.io/kodansha/bedrock:php8.2-fpm
 
 ENV WEB_ROOT /workspaces/{{project_name}}
 
