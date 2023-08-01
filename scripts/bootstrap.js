@@ -40,7 +40,7 @@ async function updateGitignore() {
 
 (async () => {
   const wpPort = await readUserInput(
-    "Enter WordPress Web port number (default 8000): "
+    "Enter WordPress Web port number (default 80): "
   );
   const dbPort = await readUserInput(
     "Enter Database port number (default 33060): "
@@ -51,7 +51,8 @@ async function updateGitignore() {
 
   const replacements = {
     project_name: projectName,
-    wordpress_port: wpPort ? wpPort : "8000",
+    wordpress_port: wpPort ? wpPort : "80",
+    wordpress_port_with_colon: wpPort ? `:${wpPort}` : "",
     database_name: databaseName,
     database_port: dbPort ? dbPort : "33060",
   };
