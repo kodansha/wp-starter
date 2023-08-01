@@ -80,7 +80,7 @@ if (env('DB_SSL')) {
 Config::define('DB_NAME', env('DB_NAME'));
 Config::define('DB_USER', env('DB_USER'));
 Config::define('DB_PASSWORD', env('DB_PASSWORD'));
-// 本番環境などでセキュリティ上の理由などでデータベースの接続ポートを変更している場合のサポート
+// Support for cases where the database connection port has been changed for security reasons, etc.
 if (env('DB_HOST') && env('DB_PORT')) {
     Config::define('DB_HOST', env('DB_HOST') . ':' . env('DB_PORT'));
 } else if (env('DB_HOST')) {

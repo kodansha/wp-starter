@@ -9,7 +9,7 @@ composer install
 
 # Install WordPress
 wp core install \
-  --url="http://localhost{{wordpress_port_with_colon}}" \
+  --url="http://localhost.localdomain{{wordpress_port_with_colon}}" \
   --title="{{project_name}}" \
   --admin_user="admin" \
   --admin_password="admin" \

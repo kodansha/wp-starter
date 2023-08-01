@@ -113,8 +113,8 @@ VS Code で clone したフォルダーをワークスペースとして開き�
 
 実行が完了すると、すぐに WordPress 管理画面にアクセスできるようになる。
 
-- フロント画面: http://localhost:<設定した WordPress ポート>
-- 管理画面: http://localhost:<設定した WordPress ポート>/wp/wp-admin
+- フロント画面: http://localhost.localdomain:<設定した WordPress ポート>
+- 管理画面: http://localhost.localdomain:<設定した WordPress ポート>/wp/wp-admin
   - ユーザー: `admin`
   - パスワード: `admin`
 
