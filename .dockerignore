@@ -30,18 +30,12 @@ wp-cli.local.yml
 # WordPress languages (installed via Composer https://wp-languages.github.io)
 web/app/languages/
 
-# Composer auth.json
-auth.json
-
 # Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/launch.wpstemplate.json
-!.vscode/extensions.json
-*.code-workspace
+.vscode/
 # Local History for Visual Studio Code
 .history/
 # devcontainer
-.devcontainer/devcontainer.json
+.devcontainer/
+
+# Git
+.git/
