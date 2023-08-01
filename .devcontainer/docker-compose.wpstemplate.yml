@@ -4,8 +4,8 @@ services:
       context: ./docker/wordpress
     init: true
     volumes:
-      - ..:/var/www/html:cached
-      - bedrock-vendor:/var/www/html/vendor # Bedrock composer vendor
+      - ..:/workspaces/{{project_name}}:cached
+      - bedrock-vendor:/workspaces/{{project_name}}/vendor # Bedrock composer vendor
     depends_on:
       - mysql
 
@@ -15,7 +15,7 @@ services:
     ports:
       - "{{wordpress_port}}:80"
     volumes:
-      - ..:/var/www/html:cached
+      - ..:/workspaces/{{project_name}}:cached
     depends_on:
       - wordpress
 
@@ -27,7 +27,7 @@ services:
     environment:
       MYSQL_DATABASE: "{{database_name}}"
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_HOST: "%"
     volumes:
       - mysql-data:/var/lib/mysql
 

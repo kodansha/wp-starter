@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-ROOT_DIR=/var/www/html
+ROOT_DIR=/workspaces/{{project_name}}
 
 cd $ROOT_DIR
 composer install

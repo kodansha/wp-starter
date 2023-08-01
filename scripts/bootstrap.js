@@ -58,7 +58,7 @@ async function updateGitignore() {
   };
 
   for await (const f of getFiles(".")) {
-    if (f.includes(".wpstemplate.")) {
+    if (f.includes(".wpstemplate")) {
       for (const [placeholder, to] of Object.entries(replacements)) {
         const content = fs.readFileSync(f, "utf8");
         var re = new RegExp(`{{${placeholder}}}`, "g");

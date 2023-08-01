@@ -1,6 +1,6 @@
 FROM ghcr.io/kodansha/bedrock:php8.0-fpm
 
-ENV WEB_ROOT /var/www/html
+ENV WEB_ROOT /workspaces/{{project_name}}
 
 # Custom PHP configuration
 RUN { \
