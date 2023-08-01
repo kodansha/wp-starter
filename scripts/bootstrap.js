@@ -71,12 +71,6 @@ async function updateGitignore() {
       if (path.basename(newFilename) === ".env.example") {
         const envFilename = path.join(path.dirname(f), ".env");
         fs.copyFileSync(newFilename, envFilename);
-      } else if (path.basename(newFilename) === "devcontainer.default.jsonc") {
-        const devcontainerFilename = path.join(
-          path.dirname(f),
-          "devcontainer.json"
-        );
-        fs.copyFileSync(newFilename, devcontainerFilename);
       }
     }
   }
