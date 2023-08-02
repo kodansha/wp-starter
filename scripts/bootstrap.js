@@ -31,13 +31,6 @@ async function* getFiles(dir) {
   }
 }
 
-async function updateGitignore() {
-  const gitignorePath = path.join(__dirname, "..", ".gitignore");
-  const content = fs.readFileSync(gitignorePath, "utf8");
-  const replaced = content.replace("\ncomposer.lock\n", "");
-  fs.writeFileSync(gitignorePath, replaced, "utf8");
-}
-
 (async () => {
   const wpPort = await readUserInput(
     "Enter WordPress Web port number (default 80): "
@@ -74,6 +67,4 @@ async function updateGitignore() {
       }
     }
   }
-
-  updateGitignore();
 })();
