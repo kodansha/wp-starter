@@ -27,4 +27,4 @@ echo ↓
 echo $bedrock_tag : The most recent Bedrock tag
 echo "========================================================================="
 
-git difftool ${wp_starter_tag} ${bedrock_tag}
+git difftool -d ${wp_starter_tag} ${bedrock_tag}
