@@ -7,8 +7,8 @@
 
 set -uo pipefail
 
-# Get the most recent Git tag
-wp_starter_tag=`git describe --tags --abbrev=0`
+# Get the most recent Git tag that starts with "bedrock/"
+wp_starter_bedrock_tag=$(git tag -l 'bedrock/*' | xargs -I{} git log -1 --format="%ai {}" {} | sort -r | head -n 1 | awk '{print $4}' | cut -d'/' -f2-)
 
 pushd "$(dirname "$0")" >/dev/null 2>&1
 
@@ -19,12 +19,12 @@ pushd bedrock >/dev/null 2>&1
 git pull
 
 # Get the most recent Bedrock tag
-bedrock_tag=`git describe --tags --abbrev=0`
+original_bedrock_tag=`git describe --tags --abbrev=0`
 
 echo "========================================================================="
-echo $wp_starter_tag : The most recent wp-starter tag
+echo $wp_starter_bedrock_tag : The most recent wp-starter tag
 echo ↓
-echo $bedrock_tag : The most recent Bedrock tag
+echo $original_bedrock_tag : The most recent Bedrock tag
 echo "========================================================================="
 
-git difftool -d ${wp_starter_tag} ${bedrock_tag}
+git difftool -d ${wp_starter_bedrock_tag} ${original_bedrock_tag}

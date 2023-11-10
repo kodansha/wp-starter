@@ -113,10 +113,10 @@ wp-starter は、本家 Bedrock の更新をできるだけ取り込んで更新
 そのため、Bedrock リポジトリ側の更新差分が把握できるように、**どのバージョンの Bedrock
 がベースとなっているかを Git タグで明示しておく必要がある。**
 
-例えば、[Bedrock のリリースバージョン **1.20.1**](https://github.com/roots/bedrock/releases/tag/1.20.1)
-をベースにしている場合は、wp-starter 側でも同様に [**1.20.1** のタグを打っておく](https://github.com/kodansha/wp-starter/releases/tag/1.20.1)ことをルールとする。
+例えば、[Bedrock のリリースバージョン **1.22.5**](https://github.com/roots/bedrock/releases/tag/1.22.5)
+をベースにしている場合は、wp-starter 側で [**bedrock/1.22.5** のタグを打っておく](https://github.com/kodansha/wp-starter/releases/tag/bedrock%2F1.22.5)ことをルールとする。
 
-同様に、もし Bedrock **1.21.0** の更新差分を wp-starter に取り込んだ場合は **1.21.0** のタグを打っておくこと。
+同様に、もし Bedrock **1.23.10** の更新差分を wp-starter に取り込んだ場合は **bedrock/1.23.10** のタグを打っておくこと。
 
 ### Bedrock 差分チェッカー
 
