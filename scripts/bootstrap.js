@@ -32,12 +32,20 @@ async function* getFiles(dir) {
 }
 
 (async () => {
-  const wpPort = await readUserInput(
-    "Enter WordPress Web port number (default 80): "
-  );
-  const dbPort = await readUserInput(
-    "Enter Database port number (default 33060): "
-  );
+  const args = process.argv;
+  const hasDefaultArg = args.includes("--default");
+
+  let wpPort = undefined;
+  let dbPort = undefined;
+
+  if (!hasDefaultArg) {
+    wpPort = await readUserInput(
+      "Enter WordPress Web port number (default 80): "
+    );
+    dbPort = await readUserInput(
+      "Enter Database port number (default 33060): "
+    );
+  }
 
   const projectName = path.basename(path.resolve(__dirname, ".."));
   const databaseName = projectName.replace(/[-\.]/g, "_");
