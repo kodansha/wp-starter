@@ -130,3 +130,24 @@ scripts/check-bedrock-changes.sh
 
 このスクリプトは単純に `roots/bedrock` のリポジトリを clone して、wp-starter
 の最新タグと比較して `git difftool` を実行している。
+
+### wp-standard 更新補助用スクリプト
+
+[kodansha/wp-standard](https://github.com/kodansha/wp-standard) は、この
+wp-starter を利用して作られており、wp-starter の更新に追従するようにしている。
+
+手動でそれを行うのは面倒なので、wp-standard の更新補助用スクリプトを用意している。
+
+以下の手順で実行すると、wp-standard の最新版を取得して、wp-starter に反映することができる。
+
+```text
+cd scripts
+```
+
+```text
+node create-wp-standard.js
+```
+
+> **Note**
+> wp-standard のローカルリポジトリのディレクトリが `../wp-standard` に存在することを前提としているため、別の場所にある場合は正しく動作しない。
+> また、 `composer update` を実行するので、wp-starter の要求するバージョンと一致した PHP の実行環境も必要になる。
