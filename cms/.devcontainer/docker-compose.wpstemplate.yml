@@ -1,11 +1,10 @@
 services:
   cms-wordpress:
     build:
-      context: ./docker/cms/wordpress
-      dockerfile: development/Dockerfile
+      context: ./docker/wordpress
     init: true
     volumes:
-      - .:/workspaces/{{project_name}}:cached
+      - ../..:/workspaces/{{project_name}}:cached
     extra_hosts:
       - "localhost.localdomain:host-gateway"
     depends_on:
@@ -14,12 +13,11 @@ services:
 
   cms-nginx:
     build:
-      context: ./docker/cms/nginx
-      dockerfile: development/Dockerfile
+      context: ./docker/nginx
     ports:
       - "{{wordpress_port}}:80"
     volumes:
-      - .:/workspaces/{{project_name}}:cached
+      - ../..:/workspaces/{{project_name}}:cached
     depends_on:
       - cms-wordpress
 
