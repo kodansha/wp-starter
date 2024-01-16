@@ -68,38 +68,22 @@ node scripts/bootstrap.js
 
 ### 開発環境の起動
 
-VS Code で clone したフォルダーをワークスペースとして開き、**Remote-Containers: Reopen in Container** を実行する。
+VS Code で clone したフォルダーをワークスペースとして開き、**Dev Containers: Reopen in Container** を実行する。
 
-それだけで、`.devcontainer` に格納された設定情報にしたがって、自動的に Docker コンテナ内の開発環境が起動する。
+それだけで、`.devcontainer` に格納された設定情報にしたがって、自動的に Docker コンテナ内の開発環境が起動し、各種設定が実行される。
 
-具体的には以下の初期化プロセスが自動実行される:
+### WordPress 管理画面へのアクセス
 
-1. WordPress / Nginx の Docker コンテナのビルド
-2. WordPress / Nginx / MySQL の Docker コンテナの起動
-3. VS Code のコンテナ開発環境の起動
-4. `postCreateCommand.bash` による、以下の開発環境の初期設定
-
-- Composer パッケージによる WordPress core やプラグインの取得
-- WordPress のインストールと初期設定
-- 必要なプラグインの有効化と初期設定
-
-**NOTE:**
-
-- 初回起動時には、マシンのリソース状況に依存するが、上記実行に時間がかかる。エラーがなければ待っていれば終了するので、放置していて OK
-- 初回起動時に、MySQL コンテナの初期化処理に時間がかかり、`postCreateCommand` の実行でエラーが発生する場合がある。そのときは、`Rebuild Container` を実行してコンテナを再ビルドすること
-- 再起動時などにエラーが発生した場合は、まず **Remote-Containers: Reopen in Container** を実行して再構築を試すこと
-- もし、再構築してもどうしても復旧しない場合、データは初期化されるが、Docker ボリュームの削除が有効なことがある。`docker volume ls` で `wp-starter_devcontainer_*` のボリュームを確認し、個別に削除すること
-
-実行が完了すると、すぐに WordPress 管理画面にアクセスできるようになる。
+Dev Container が起動していれば、WordPress 管理画面にアクセスできる。
 
 - フロント画面: http://localhost.localdomain:<設定した WordPress ポート>
 - 管理画面: http://localhost.localdomain:<設定した WordPress ポート>/wp/wp-admin
   - ユーザー: `admin`
   - パスワード: `admin`
 
-## テーマの開発
+### テーマの開発
 
-主に開発は WordPress テーマに対して行う。テーマは `web/app/themes/default-theme` として配置されている。
+主に開発は WordPress テーマに対して行う。テーマは `cms/web/app/themes/default-theme` として配置されている。
 
 初期状態では完全に空っぽのテーマになっているため、画面なども一切ない状態。
 
