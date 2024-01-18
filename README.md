@@ -76,8 +76,8 @@ VS Code で clone したフォルダーをワークスペースとして開き�
 
 Dev Container が起動していれば、WordPress 管理画面にアクセスできる。
 
-- フロント画面: http://localhost.localdomain:<設定した WordPress ポート>
-- 管理画面: http://localhost.localdomain:<設定した WordPress ポート>/wp/wp-admin
+- フロント画面: http://mylocaldoma.in:<設定した WordPress ポート>
+- 管理画面: http://mylocaldoma.in:<設定した WordPress ポート>/wp/wp-admin
   - ユーザー: `admin`
   - パスワード: `admin`
 
