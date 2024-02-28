@@ -26,10 +26,6 @@
         "koodimonni-plugin-language/*",
         "koodimonni-theme-language/*"
       ]
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/kodansha/killer-pads.git"
     }
   ],
   "require": {
