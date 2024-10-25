@@ -73,7 +73,7 @@ while (i < lines.length) {
     // 4行が連続している場合はスキップ
     i += 4;
   } else if (lines[i].includes('"kodansha/killer-pads": ')) {
-    newLines.push('    "wpackagist-plugin/advanced-custom-fields": "6.2.1",');
+    newLines.push('    "wpackagist-plugin/advanced-custom-fields": "6.3.9",');
     newLines.push('    "wpackagist-plugin/wp-multibyte-patch": "2.9"');
     i++;
   } else {
