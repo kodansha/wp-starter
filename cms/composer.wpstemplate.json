@@ -43,7 +43,7 @@
     "kodansha/killer-pads": "^1.4"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^3.7.1",
+    "laravel/pint": "^1.18",
     "roave/security-advisories": "dev-latest"
   },
   "config": {
@@ -83,8 +83,7 @@
     }
   },
   "scripts": {
-    "test": [
-      "phpcs"
-    ]
+    "lint": "pint --test",
+    "lint:fix": "pint"
   }
 }
