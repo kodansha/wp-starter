@@ -27,6 +27,13 @@
     "initializeCommand": ".devcontainer/initializeCommand.sh",
     "postCreateCommand": ".devcontainer/postCreateCommand.sh",
     "customizations": {
+        "settings": {
+            "laravel-pint-fixer.pintBinPath": "/workspaces/{{project_name}}/cms/vendor/bin/pint",
+            "laravel-pint-fixer.pintConfigPath": "/workspaces/{{project_name}}/cms/pint.json",
+            "[php]": {
+                "editor.defaultFormatter": "evgenius33.laravel-pint-fixer"
+            }
+        },
         "vscode": {
             "extensions": [
                 "bmewburn.vscode-intelephense-client",
