@@ -38,7 +38,7 @@
             "extensions": [
                 "bmewburn.vscode-intelephense-client",
                 "xdebug.php-debug",
-                "open-southeners.laravel-pint",
+                "evgenius33.laravel-pint-fixer",
                 "mikestead.dotenv"
             ]
         }
