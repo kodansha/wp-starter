@@ -178,9 +178,3 @@ if (!defined('ABSPATH')) {
  * (See web/app/mu-plugins/register-theme-directory.php for details)
  */
 define('WP_DEFAULT_THEME', 'default-theme');
-
-/**
- * Killer Pads
- * https://github.com/kodansha/killer-pads
- */
-define('KILLER_PADS_NAMESPACE_WHITELIST', ['wp/v2']);

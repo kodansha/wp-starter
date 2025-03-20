@@ -52,40 +52,6 @@ const data = fs.readFileSync(filePath, "utf8");
 // ファイルの内容を行ごとに分割
 const lines = data.split("\n");
 
-// 削除するブロックのパターン
-const patterns = [
-  "    },",
-  "    {",
-  '      "type": "vcs",',
-  '      "url": "https://github.com/kodansha/killer-pads.git"',
-];
-
-// ブロックを特定して削除
-let newLines = [];
-let i = 0;
-while (i < lines.length) {
-  if (
-    lines[i] === patterns[0] &&
-    lines[i + 1] === patterns[1] &&
-    lines[i + 2] === patterns[2] &&
-    lines[i + 3] === patterns[3]
-  ) {
-    // 4行が連続している場合はスキップ
-    i += 4;
-  } else if (lines[i].includes('"kodansha/killer-pads": ')) {
-    newLines.push('    "wpackagist-plugin/advanced-custom-fields": "6.3.9",');
-    newLines.push('    "wpackagist-plugin/wp-multibyte-patch": "2.9"');
-    i++;
-  } else {
-    newLines.push(lines[i]);
-    i++;
-  }
-}
-
-// 新しい内容をファイルに同期的に書き戻す
-fs.writeFileSync(filePath, newLines.join("\n"), "utf8");
-console.log("File updated successfully.");
-
 // 上位 (scripts) ディレクトリに移動
 process.chdir("../");
 

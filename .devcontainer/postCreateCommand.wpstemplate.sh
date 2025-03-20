@@ -41,8 +41,7 @@ wp core install \
 
 # Activate plugins
 wp plugin activate \
-  wp-multibyte-patch \
-  killer-pads
+  wp-multibyte-patch
 
 # Switch language to ja
 wp site switch-language ja

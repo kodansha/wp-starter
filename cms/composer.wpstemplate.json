@@ -39,8 +39,7 @@
     "roots/wp-config": "1.0.0",
     "roots/wp-password-bcrypt": "1.2.0",
     "koodimonni-language/ja": "6.7.2",
-    "wpackagist-plugin/wp-multibyte-patch": "2.9",
-    "kodansha/killer-pads": "^1.4"
+    "wpackagist-plugin/wp-multibyte-patch": "2.9"
   },
   "require-dev": {
     "laravel/pint": "^1.18",
