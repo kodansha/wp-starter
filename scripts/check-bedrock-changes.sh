@@ -19,7 +19,7 @@ pushd bedrock >/dev/null 2>&1
 git pull
 
 # Get the most recent Bedrock tag
-original_bedrock_tag=`git describe --tags --abbrev=0`
+original_bedrock_tag=$(git describe --tags --abbrev=0)
 
 echo "========================================================================="
 echo $wp_starter_bedrock_tag : The most recent wp-starter tag
@@ -27,4 +27,5 @@ echo ↓
 echo $original_bedrock_tag : The most recent Bedrock tag
 echo "========================================================================="
 
-git difftool -d ${wp_starter_bedrock_tag} ${original_bedrock_tag}
+# git difftool -d ${wp_starter_bedrock_tag} ${original_bedrock_tag}
+git diffa ${wp_starter_bedrock_tag} ${original_bedrock_tag}
